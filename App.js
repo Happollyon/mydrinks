@@ -18,7 +18,7 @@ export default class App extends React.Component {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='Splash' component={Splash}/  >
+        <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
       </Stack.Navigator>
     </NavigationContainer>
   );
