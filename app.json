@@ -2,9 +2,15 @@
   "expo": {
     "name": "mydrinks",
     "slug": "mydrinks",
-    "version": "1.0.0",
+    "version": "1.0.0", 
+    "orientation": "portrait",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    
+    "ios": {
+     
+      "requireFullScreen": true
+    }
   }
 }

@@ -3,25 +3,31 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 // Screens berfore login 
 import Splash from './screens/beforelogin/Splash';
+import Welcome from './screens/beforelogin/Welcome';
 // screens after login
 const Stack = createStackNavigator(); 
 export default class App extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {}
   }
+  
+  async componentWillMount(){
+		await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+	}
   render(){
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Welcome'>
+          <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
+          <Stack.Screen name='Welcome' component={Welcome} options={{headerShown:false}}/>  
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 }
 }
 

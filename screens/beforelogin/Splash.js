@@ -10,6 +10,17 @@ class Splash extends React.Component{
         this.state = {
         }
     }
+
+    componentDidMount(){
+        // Start counting when the page is loaded
+        this.timeoutHandle = setTimeout(()=>{
+            // Add your logic for the transition
+            this.props.navigation.navigate('Welcome') // what to push here?
+        }, 5000);
+    }
+    componentWillUnmount(){
+        clearTimeout(this.timeoutHandle); 
+    }
     render(){
         return(
         <View style={style.container}>
@@ -18,6 +29,7 @@ class Splash extends React.Component{
                 <View style={{width:'65,81%',aspectRatio:1.4,flexDirection:'row'}}>
                     <Image style={{width:'100%',height:'100%'}}source={require('../assets/logo.png')}/>
                 </View>
+
             </LinearGradient>
         </View>)
     }
