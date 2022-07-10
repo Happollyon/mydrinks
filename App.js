@@ -8,6 +8,7 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 // Screens berfore login 
 import Splash from './screens/beforelogin/Splash';
 import Welcome from './screens/beforelogin/Welcome';
+import Username from './screens/beforelogin/Username';
 // screens after login
 const Stack = createStackNavigator(); 
 export default class App extends React.Component {
@@ -22,9 +23,10 @@ export default class App extends React.Component {
   render(){
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Welcome'>
+        <Stack.Navigator initialRouteName='Splash'>
           <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
           <Stack.Screen name='Welcome' component={Welcome} options={{headerShown:false}}/>  
+          <Stack.Screen name='Username' component={Username}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
