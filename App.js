@@ -9,8 +9,10 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 import Splash from './screens/beforelogin/Splash';
 import Welcome from './screens/beforelogin/Welcome';
 import Username from './screens/beforelogin/Username';
-import AlertScreen from './screens/beforelogin/AlertScreen';
+import Password from './screens/beforelogin/Password';
+import ConfirmPassword from './screens/beforelogin/ConfirmPassword';
 // screens after login
+
 const Stack = createStackNavigator(); 
 export default class App extends React.Component {
   constructor(props){
@@ -24,10 +26,12 @@ export default class App extends React.Component {
   render(){
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Username'>
+        <Stack.Navigator initialRouteName='Password'>
           <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
           <Stack.Screen name='Welcome' component={Welcome} options={{headerShown:false}}/>  
           <Stack.Screen name='Username' navigation={this.navigation} component={Username} options={{headerShown:false}}/>
+          <Stack.Screen name="Password" component={Password} options={{headerShown:false}}/>
+          <Stack.Screen name="ConfirmPassword" component={ConfirmPassword} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

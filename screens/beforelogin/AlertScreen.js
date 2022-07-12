@@ -27,7 +27,7 @@ class AlertScreen extends React.Component{
                             </View>
                             <View style={{width:'73.36%',aspectRatio:2, flexDirection:'column',alignItems:'center',justifyContent:'space-around'}}>
                                 <Text style={[this.props.AlertType == 'error'?style.errorTitle:style.successTitle]}>
-                                    Sorry
+                                    {this.props.title}
                                 </Text>
                                 <Text style={[this.props.AlertType == 'error'?style.errorMessage:style.successMessage]}>
                                     {this.props.message}

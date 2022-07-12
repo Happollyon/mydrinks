@@ -18,19 +18,33 @@ class Username extends React.Component{
             this.changeState = this.changeState.bind(this);
         }
     
+    // this function gets called every time the TextInput changes  and updates the username state
     updataUsername(text){
             this.setState({username:text})
     }
+
+    // this function is called when the user tries to submit username. It checks if username is allowed. 
+    
     CheckUsername() {
+        //if not allowed IsVisible state is set to true and an alert is shown. 
+        //Alert in this context is AlertScreen.js
         if(this.state.username=='student'){
             this.setState({IsVisible:true})
             console.log('here')
             console.log(this.state.IsVisible)
         }else{
+            // if user name is alled user is sent to password screen. 
             console.log(this.state.username)
             
         }
     }
+
+    /*
+     this function should be added to all screens that use AlertScreen.js component.
+     This function sets whether the alert shoud be visible or not. 
+     The fuction should be passed to the AlertScreen.js as a prop. 
+     IsVisible state should be added to the parent to AlertScreen js.    
+     */
     changeState() {
         let toggle = !this.state.IsVisible;
         this.setState({IsVisible:toggle})
