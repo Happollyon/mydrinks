@@ -11,7 +11,10 @@ class Username extends React.Component{
             super(props);
             this.state={
                     IsVisible:false,
-                    username:''
+                    username:'',
+                    AlertType:'',
+                    title:'',
+                    message:''
             }
             this.CheckUsername = this.CheckUsername.bind(this)
             this.updataUsername = this.updataUsername.bind(this)
@@ -24,17 +27,20 @@ class Username extends React.Component{
     }
 
     // this function is called when the user tries to submit username. It checks if username is allowed. 
-    
     CheckUsername() {
         //if not allowed IsVisible state is set to true and an alert is shown. 
         //Alert in this context is AlertScreen.js
         if(this.state.username=='student'){
-            this.setState({IsVisible:true})
-            console.log('here')
-            console.log(this.state.IsVisible)
+            this.setState({
+                IsVisible:true,
+                AlertType:'error',
+                title:'Sorry',
+                message:'The username is not available'
+            })
+            
         }else{
             // if user name is alled user is sent to password screen. 
-            console.log(this.state.username)
+           this.props.navigation.navigate('Password')
             
         }
     }
@@ -48,14 +54,14 @@ class Username extends React.Component{
     changeState() {
         let toggle = !this.state.IsVisible;
         this.setState({IsVisible:toggle})
-       console.log('fagner')
+       
    }
     render(){
         return(
            <TouchableWithoutFeedback  onPress={Keyboard.dismiss}>
             
             <KeyboardAvoidingView behavior="padding" style={{flex:1}}>
-            <AlertScreen AlertType={'sucess'} title={'Sorry'} message={'The username is not available.'} IsVisible={this.state.IsVisible} changeState={this.changeState}/>
+            <AlertScreen AlertType={this.state.AlertType} title={this.state.title} message={this.state.message} IsVisible={this.state.IsVisible} changeState={this.changeState}/>
                 <LinearGradient style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center'}} locations={[0.5,1]}colors={['#E3DDFA','#fff']}>
                     <StatusBar style="dark"/>
                     <View style={{ flexDirection:'column',alignItems:'center',justifyContent:'center', width:'100%',aspectRatio:0.94}} >

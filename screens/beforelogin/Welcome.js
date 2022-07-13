@@ -47,7 +47,7 @@ render(){
                         Create Account
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Login')} >
                    <Text style={{color:'#7966FF',fontSize:RFPercentage(3)}}>Login to account</Text>
                 </TouchableOpacity>
             </View>

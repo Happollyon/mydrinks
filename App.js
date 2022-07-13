@@ -11,6 +11,7 @@ import Welcome from './screens/beforelogin/Welcome';
 import Username from './screens/beforelogin/Username';
 import Password from './screens/beforelogin/Password';
 import ConfirmPassword from './screens/beforelogin/ConfirmPassword';
+import Login from './screens/beforelogin/Login';
 // screens after login
 
 const Stack = createStackNavigator(); 
@@ -20,18 +21,19 @@ export default class App extends React.Component {
     this.state = {}
   }
   
-  async componentWillMount(){
+  async Unsefa_componentWillMount(){
 		await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
 	}
   render(){
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Password'>
+        <Stack.Navigator initialRouteName='Splash'>
           <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
           <Stack.Screen name='Welcome' component={Welcome} options={{headerShown:false}}/>  
           <Stack.Screen name='Username' navigation={this.navigation} component={Username} options={{headerShown:false}}/>
           <Stack.Screen name="Password" component={Password} options={{headerShown:false}}/>
           <Stack.Screen name="ConfirmPassword" component={ConfirmPassword} options={{headerShown:false}}/>
+          <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
