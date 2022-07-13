@@ -11,6 +11,7 @@ class Splash extends React.Component{
         }
     }
 
+    // this page makes sure that the Splash.js is visible for at least 5 secs. 
     componentDidMount(){
         // Start counting when the page is loaded
         this.timeoutHandle = setTimeout(()=>{
@@ -18,6 +19,7 @@ class Splash extends React.Component{
             this.props.navigation.navigate('Welcome') // what to push here?
         }, 5000);
     }
+    // Before the component closes the timer is cleared.
     componentWillUnmount(){
         clearTimeout(this.timeoutHandle); 
     }

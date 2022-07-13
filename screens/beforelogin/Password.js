@@ -24,7 +24,7 @@ class Password extends React.Component{
                 <LinearGradient style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center'}} locations={[0.5,1]}colors={['#E3DDFA','#fff']}>
                     <StatusBar style="dark"/>
                     <View style={{ flexDirection:'column',alignItems:'center',justifyContent:'center', width:'100%',aspectRatio:0.94}} >
-                        <View style={{width:'79%',aspectRatio:1.75 }}>
+                          <View style={{width:'79%',aspectRatio:1.75 }}>
                             <Image style={{width:'100%',height:'100%'}} source={require('../assets/PasswordArt.png')}/>
                         </View>
                     </View >
@@ -39,7 +39,7 @@ class Password extends React.Component{
                                 </Text>
                             </View>
                             <View style={{width:'100%',aspectRatio:2.04,flexDirection:'column',alignItems:'center',justifyContent:'space-around',backgroundColor:'white', borderRadius:RFPercentage(2)}}>
-                                <TextInput secureTextEntry={true}  placeholder="Password" onChangeText={text=>this.updatePassword(text)} placeholderTextColor={'#7966FF'} color='blue'style={{ textAlign:'center', color:'#7966FF',width:'90%',aspectRatio:5.71,borderColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}/>
+                                <TextInput secureTextEntry={true}  placeholder="Password" onChangeText={text=>this.setState({password:text})} placeholderTextColor={'#7966FF'} color='blue'style={{ textAlign:'center', color:'#7966FF',width:'90%',aspectRatio:5.71,borderColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}/>
                                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('ConfirmPassword',{password:this.state.password})} style={{flexDirection:'column',justifyContent:'center',alignItems:'center',width:'90%',aspectRatio:5.71,backgroundColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}>
                                     <View style={{width:'11.11%',aspectRatio:1}}>
                                         <Image style={{width:'100%',height:'100%'}} source={require('../assets/arrowIcon.png')}/>

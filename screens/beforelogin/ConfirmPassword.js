@@ -26,7 +26,7 @@ class ConfirmPassword extends React.Component{
 
 
     checkIfPasswordMatch(){
-        if(this.state.password==this.props.password){
+        if(this.state.password==this.props.route.params.password){
             this.setState({
                 title:'Yeeyy!',
                 message:'You are all set. Enjoy!',
@@ -34,7 +34,7 @@ class ConfirmPassword extends React.Component{
                 IsVisible:true
             })
         }else{
-            console.log(this.props.password)
+            console.log(this.props.route.params.password)
             this.setState({
                 title:'Sorry',
                 message:'The password dont match.',
