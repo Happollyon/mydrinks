@@ -13,6 +13,7 @@ import Password from './screens/beforelogin/Password';
 import ConfirmPassword from './screens/beforelogin/ConfirmPassword';
 import Login from './screens/beforelogin/Login';
 // screens after login
+import Home from './screens/afterlogin/Home';
 
 const Stack = createStackNavigator(); 
 export default class App extends React.Component {
@@ -27,13 +28,15 @@ export default class App extends React.Component {
   render(){
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Splash'>
+        <Stack.Navigator initialRouteName='Login'>
           <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
           <Stack.Screen name='Welcome' component={Welcome} options={{headerShown:false}}/>  
           <Stack.Screen name='Username' navigation={this.navigation} component={Username} options={{headerShown:false}}/>
           <Stack.Screen name="Password" component={Password} options={{headerShown:false}}/>
           <Stack.Screen name="ConfirmPassword" component={ConfirmPassword} options={{headerShown:false}}/>
           <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
+
+          <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

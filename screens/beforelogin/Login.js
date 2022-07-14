@@ -17,6 +17,11 @@ class Login extends React.Component{
         this.CheckCredentials = this.CheckCredentials.bind(this)
     }
 
+    /*
+        This function checks the credentials and if they dont match 
+        the IsVisible is set to true and the appropriate message is 
+        shown to the user. 
+    */
     CheckCredentials() {
         if(this.state.password == "123" && this.state.username =="student")
         {
@@ -26,6 +31,8 @@ class Login extends React.Component{
                 title:'Sorry',
                 message:'The username and password dont match.'
             })
+        }else{
+            this.props.navigation.navigate('Home')
         }
     }
      /*
@@ -37,7 +44,7 @@ class Login extends React.Component{
      changeState() {
         let toggle = !this.state.IsVisible;
         this.setState({IsVisible:toggle})
-       console.log('fagner')
+       
    }
 
     render(){
