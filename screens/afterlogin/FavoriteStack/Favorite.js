@@ -1,5 +1,6 @@
 import React from "react";
 import {View,Text} from 'react-native';
+import Body from "../SearchStack/Body";
 
 class Favorite extends React.Component{
     constructor(props){
@@ -10,8 +11,8 @@ class Favorite extends React.Component{
     }
     render(){
         return(
-            <View>
-                <Text>Favorite</Text>
+            <View style={{flex:1}}>
+                <Body/>
             </View>
         )
     }

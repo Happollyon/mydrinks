@@ -24,7 +24,8 @@ class Home extends React.Component{
                 tabBarShowLabel:false,
                 tabBarStyle:{
                 backgroundColor:'#7966FF',width:'100%',height:'12%',
-                borderTopLeftRadius:RFPercentage(4),borderTopRightRadius:RFPercentage(4)
+                borderTopLeftRadius:RFPercentage(4),borderTopRightRadius:RFPercentage(4),
+                position:'absolute'
             }}}>
                 <Tab.Screen 
                 name="SearchStack" 
