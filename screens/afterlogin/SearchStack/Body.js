@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { View, FlatList} from "react-native";
 
@@ -22,7 +23,32 @@ const DATA = [
       title: 'Third Item',
       color:'white'
 
-    },
+    },{
+        id: '58694a0f-3da1-471f-bd9d6-145571er29d72',
+        title: 'Third Item',
+        color:'white'
+  
+      },{
+        id: '58694a0f-3da1-471f-bd96-1455w71e29d72',
+        title: 'Third Item',
+        color:'white'
+  
+      },{
+        id: '58694a0f-3da1-471f-bd96-145571e29qd72',
+        title: 'Third Item',
+        color:'white'
+  
+      },{
+        id: '58694a0f-3da1-471f-bd96-145g571e29d72',
+        title: 'Third Item',
+        color:'white'
+  
+      },{
+        id: '58694a0f-3dah1-471f-bd96-145571e29d72',
+        title: 'Third Item',
+        color:'white'
+  
+      },
   ];
 
 class Body extends React.Component{
@@ -38,8 +64,8 @@ class Body extends React.Component{
     render(){
         return(
             <View style={{width:'100%',aspectRatio:0.56,backgroundColor:'#F8F8F8',borderRadius:RFPercentage(4),bottom:0,position:'absolute'}}>
-            <FlatList style={{}}
-            contentContainerStyle={{alignItems:'center'}}
+            <FlatList style={{borderRadius:RFPercentage(4)}}
+            contentContainerStyle={{alignItems:'center',paddingBottom:100}}
             data={DATA}
             renderItem={({item})=>(<Item color={item.color} title={item.title}/>)}
             keyExtractor={item => item.id}
