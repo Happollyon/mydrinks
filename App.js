@@ -14,7 +14,9 @@ import ConfirmPassword from './screens/beforelogin/ConfirmPassword';
 import Login from './screens/beforelogin/Login';
 // screens after login
 import Home from './screens/afterlogin/Home';
-
+import { enableScreens } from 'react-native-screens';
+import SearchStack from './screens/afterlogin/SearchStack/SearchStack';
+enableScreens();
 const Stack = createStackNavigator(); 
 export default class App extends React.Component {
   constructor(props){
@@ -36,7 +38,7 @@ export default class App extends React.Component {
           <Stack.Screen name="ConfirmPassword" component={ConfirmPassword} options={{headerShown:false}}/>
           <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
 
-          <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
+          <Stack.Screen name="SearchStack" component={SearchStack} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

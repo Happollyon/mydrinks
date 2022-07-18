@@ -16,6 +16,14 @@ class Search extends React.Component{
         this.callApiAsync = this.callApiAsync.bind(this)
     }
 
+    /*
+        The item searched by the user is sent to the api end point
+        the result is passed to the body compoment.
+        the boddy.js component is a scrallable view. Inside Body goes the Item.js 
+        Component. The Item is clickable and diretcts the user to the Recipe screen.
+     
+    */
+
     async callApiAsync(input){   
        try{
             const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s='+input);
@@ -35,7 +43,7 @@ class Search extends React.Component{
             <View style={{flex:1}}>
                 <LinearGradient style={{flex:1,alignItems:'center'}} locations={[0,0.2]} colors={['#B684F7','#5C61E7']} >
                     <SearchHeader callApi={this.callApiAsync}/>
-                    <Body  results={this.state.results.drinks}/>
+                    <Body  navigation={this.props.navigation} results={this.state.results.drinks}/>
                 </LinearGradient>
             </View>
           

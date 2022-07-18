@@ -1,6 +1,10 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Search from "./Search";
+
+//screens
+import Recipe from "./Recipe/Recipe";
+import Search from "./Search/Search";
+import Home from "../Home";
 
 const Stack = createStackNavigator();
 
@@ -9,10 +13,12 @@ export default class SearchStack extends React.Component{
         super(props);
         this.state = {}
     }
+    
     render(){
         return(
-            <Stack.Navigator initialRouteName="Search">
-                <Stack.Screen name="Search" component={Search} options={{headerShown:false}}/>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
+                <Stack.Screen name='Recipe' navigation={this.props.navigation} component={Recipe} options ={{tabBarVisable:false,headerShown:false}} />
             </Stack.Navigator>
         )
     }

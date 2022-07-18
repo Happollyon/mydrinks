@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text,Image, TouchableOpacity} from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
+import {useNavigation} from '@react-navigation/native'
+
 
 class Item extends React.Component{
 
@@ -9,6 +11,7 @@ class Item extends React.Component{
         this.state = {
             ingredientCount:0
         }
+       
     }
 
     componentDidMount(){
@@ -24,9 +27,11 @@ class Item extends React.Component{
         }
         this.setState({ingredientCount:count})
     }
+
+   
     render(){
         return(
-              <View style={{width:'89%',borderRadius:RFPercentage(3),marginVertical:RFPercentage(1.5),
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate('Recipe')} style={{width:'89%',borderRadius:RFPercentage(3),marginVertical:RFPercentage(1.5),
               aspectRatio:2.23,backgroundColor:'#FFF',flexDirection:'row'}}>
                 
                <View style={{height:'100%',width:'50%',alignItems:'center',justifyContent:'center'}}>
@@ -43,14 +48,14 @@ class Item extends React.Component{
                         <Text style={{marginLeft:RFPercentage(2),color:'#5960E6'}}>4 reviews</Text>
                         <View style={{marginLeft:RFPercentage(2),width:'46.47%',aspectRatio:4.93,flexDirection:'row'}}>
                             
-                            <View style={{height:'100%',aspectRatio:1}}><Image style={{height:'100%',aspectRatio:1}} source={require('../tabAssets/star.png')}/></View>
-                            <View style={{height:'100%',aspectRatio:1}}><Image style={{height:'100%',aspectRatio:1}} source={require('../tabAssets/star.png')}/></View>
-                            <View style={{height:'100%',aspectRatio:1}}><Image style={{height:'100%',aspectRatio:1}} source={require('../tabAssets/star.png')}/></View>
+                            <View style={{height:'100%',aspectRatio:1}}><Image style={{height:'100%',aspectRatio:1}} source={require('../../tabAssets/star.png')}/></View>
+                            <View style={{height:'100%',aspectRatio:1}}><Image style={{height:'100%',aspectRatio:1}} source={require('../../tabAssets/star.png')}/></View>
+                            <View style={{height:'100%',aspectRatio:1}}><Image style={{height:'100%',aspectRatio:1}} source={require('../../tabAssets/star.png')}/></View>
                             
                         </View>
                     </View>
                </View>
-              </View>  
+              </TouchableOpacity>  
         )
     }
     

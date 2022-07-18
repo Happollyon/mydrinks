@@ -6,6 +6,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import SearchStack from "./SearchStack/SearchStack";
 import FavoriteStack from "./FavoriteStack/FavoriteStack";
 import ProfileStack from "./ProfileStack/ProfileStack";
+import Search from "./SearchStack/Search/Search";
 
 const Tab =  createBottomTabNavigator();
 
@@ -17,20 +18,21 @@ class Home extends React.Component{
         this.state = {
 
         }
+       
     }
+   
     render(){
         return(
-            <Tab.Navigator initialRouteName="SearchStack"  screenOptions={{
-                tabBarShowLabel:false,
-                tabBarStyle:{
+            <Tab.Navigator initialRouteName="Search"   screenOptions={{tabBarShowLabel:false,
+                tabBarStyle:{  
                 backgroundColor:'#7966FF',width:'100%',height:'12%',
                 borderTopLeftRadius:RFPercentage(4),borderTopRightRadius:RFPercentage(4),
                 position:'absolute'
             }}}>
                 <Tab.Screen 
-                name="SearchStack" 
-                component={SearchStack}  
-                options={{headerShown:false,
+                name="Search" 
+                component={Search}  
+                options={{ headerShown:false,
                 tabBarIcon:({focused})=>(
                     <View style={{alignItems:'center',justifyContent:'center'}}>
                         <Image resizeMode='contain'source={focused?require('./tabAssets/searchFocus.png'):require('./tabAssets/search.png')}
@@ -57,8 +59,10 @@ class Home extends React.Component{
                 <Tab.Screen 
                 name="ProfielStack" 
                 component={ProfileStack}
-                options={{
-                    headerShown:false,tabBarIcon:({focused})=>(
+                options={{ 
+                    headerShown:false,
+                    
+                    tabBarIcon:({focused})=>(
                         <View style={{alignItems:'center',justifyContent:'center'}}>
                             <Image resizeMode='contain'source={focused?require('./tabAssets/profileFocused.png'):require('./tabAssets/profile.png')}
                             style={{width:RFPercentage(6)}}

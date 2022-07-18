@@ -32,7 +32,7 @@ class Login extends React.Component{
                 message:'The username and password dont match.'
             })
         }else{
-            this.props.navigation.navigate('Home')
+            this.props.navigation.navigate('SearchStack')
         }
     }
      /*
