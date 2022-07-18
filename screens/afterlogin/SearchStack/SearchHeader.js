@@ -15,8 +15,8 @@ class SearchHeader extends React.Component{
         return(
                 <View style={{}}>
                     
-                        <TextInput placeholder="Search" style={{ top:RFPercentage(8),width:'84.78%',textAlign:'center',fontSize:RFPercentage(3), aspectRatio:5.11,backgroundColor:'#fff',borderRadius:RFPercentage(7)}}placeholderTextColor={'#7966FF'}/>
-                    
+                        <TextInput onChangeText={()=>this.props.callApi('Blue Margarita')} placeholder="Search" style={{ top:RFPercentage(8),width:'84.78%',textAlign:'center',fontSize:RFPercentage(3), aspectRatio:5.11,backgroundColor:'#fff',borderRadius:RFPercentage(7)}}placeholderTextColor={'#7966FF'}/>
+
                 </View>
         )
     }

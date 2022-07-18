@@ -66,9 +66,9 @@ class Body extends React.Component{
             <View style={{width:'100%',aspectRatio:0.56,backgroundColor:'#F8F8F8',borderRadius:RFPercentage(4),bottom:0,position:'absolute'}}>
             <FlatList style={{borderRadius:RFPercentage(4)}}
             contentContainerStyle={{alignItems:'center',paddingBottom:100}}
-            data={DATA}
-            renderItem={({item})=>(<Item color={item.color} title={item.title}/>)}
-            keyExtractor={item => item.id}
+            data={this.props.results}
+            renderItem={({item})=>(<Item data={item}/>)}
+            keyExtractor={item => item.idDrink}
             />
             </View>
           )
