@@ -9,29 +9,55 @@ class Item extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            ingredientCount:0
+            ingredientCount:0,
+            ingredients:[],
+            measures: []
         }
        
     }
 
+    // run when componented is rendered
     componentDidMount(){
+        // the variables bellow are used to update 
+        // state once loop ends
+        let count = 0; // number of ingredientes
+        let IngredientArr = []; // stores ingredients individualy 
+        let measureArr = []; // stores measures individually 
 
-        let count = 0;
+        // 15 is the max numb of ingredients and measures. 
         for(let i = 0; i<15;i++){
+
+            // keys follow format => strIngredient1 .. and strMeasure1 ..
             let stringkEY = 'strIngredient'+i;
-            if(this.props.data[stringkEY]!=null){
+            let measureKey = "strMeasure"+i;
+
+            if(this.props.data[stringkEY]!=null)
+            {
                 
                 count = count +1;
+                IngredientArr.push(this.props.data[stringkEY])
+
+            }if(this.props.data[measureKey]!=null){
+
+                measureArr.push(this.props.data[measureKey])
             }
 
         }
-        this.setState({ingredientCount:count})
+
+        // updates the states
+        this.setState({
+            ingredientCount:count,
+            ingredients:IngredientArr,
+            measures:measureArr})
+        
     }
 
    
     render(){
         return(
-              <TouchableOpacity onPress={()=>this.props.navigation.navigate('Recipe')} style={{width:'89%',borderRadius:RFPercentage(3),marginVertical:RFPercentage(1.5),
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate('Recipe',{data:this.props.data,ingredientCount:this.state.ingredientCount,
+                ingredients:this.state.ingredients,measures:this.state.measures,navigation:this.props.navigation})} 
+              style={{width:'89%',borderRadius:RFPercentage(3),marginVertical:RFPercentage(1.5),
               aspectRatio:2.23,backgroundColor:'#FFF',flexDirection:'row'}}>
                 
                <View style={{height:'100%',width:'50%',alignItems:'center',justifyContent:'center'}}>

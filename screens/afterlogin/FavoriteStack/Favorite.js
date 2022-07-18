@@ -18,14 +18,14 @@ class Favorite extends React.Component{
     and passes the result to the body compoment.
     the boddy component is a scrallable view. Inside Body goes the Item.js 
     Component. The Item is clickable and diretcts the user to the Recipe screen.
-     
+
     */
     async componentDidMount(){
         try{
             const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=caipirinha');
             const json= await response.json();
             this.setState({results:json})
-            console.log(json)
+
             
       }catch(error){
             console.error(error)
