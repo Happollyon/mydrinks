@@ -30,7 +30,7 @@ export default class App extends React.Component {
   render(){
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Login'>
+        <Stack.Navigator initialRouteName='Splash'>
           <Stack.Screen name='Splash' options={{headerShown:false}} component={Splash}/ >
           <Stack.Screen name='Welcome' component={Welcome} options={{headerShown:false}}/>  
           <Stack.Screen name='Username' navigation={this.navigation} component={Username} options={{headerShown:false}}/>

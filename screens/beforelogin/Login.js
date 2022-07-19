@@ -23,7 +23,7 @@ class Login extends React.Component{
         shown to the user. 
     */
     CheckCredentials() {
-        if(this.state.password == "123" && this.state.username =="student")
+        if(this.state.password == "123" && this.state.username =="Student")
         {
             this.setState({
                 IsVisible:true,
@@ -69,7 +69,7 @@ class Login extends React.Component{
                             <View style={{flexDirection:'column',justifyContent:'space-around',alignItems:'center',width:'93.4%',aspectRatio:1.13,backgroundColor:'#fff',borderRadius:RFPercentage(2)}}>
                                 <TextInput placeholder="Username" onChangeText={text=>this.setState({username:text})} placeholderTextColor={'#7966FF'} color='blue'style={{ textAlign:'center', color:'#7966FF',width:'90%',aspectRatio:5.71,borderColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}/>
                                 <TextInput secureTextEntry={true}  placeholder="Password"  onChangeText={text=>this.setState({password:text})} placeholderTextColor={'#7966FF'} color='blue'style={{ textAlign:'center', color:'#7966FF',width:'90%',aspectRatio:5.71,borderColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}/>
-                                <TouchableOpacity onPress={()=>this.CheckCredentials()} style={{flexDirection:'column',justifyContent:'center',alignItems:'center',width:'90%',aspectRatio:5.71,backgroundColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(4)}}>
+                                <TouchableOpacity onPress={()=>this.CheckCredentials()} style={{flexDirection:'column',justifyContent:'center',alignItems:'center',width:'90%',aspectRatio:5.71,backgroundColor:'#7966FF',borderRadius:RFPercentage(4)}}>
                                     <View style={{width:'11.11%',aspectRatio:1}}>
                                         <Image style={{width:'100%',height:'100%'}} source={require('../assets/arrowIcon.png')}/>
                                     </View>
