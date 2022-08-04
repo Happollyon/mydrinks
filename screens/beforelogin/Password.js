@@ -14,7 +14,7 @@ class Password extends React.Component{
     // this function gets called every time the TextInput changes  and updates the username state
     updatePassword(text){
         this.setState({password:text})
-        console.log(this.state.password)
+        console.log(this.props.params.username)
     }
 
     render(){
@@ -40,7 +40,7 @@ class Password extends React.Component{
                             </View>
                             <View style={{width:'100%',aspectRatio:2.04,flexDirection:'column',alignItems:'center',justifyContent:'space-around',backgroundColor:'white', borderRadius:RFPercentage(2)}}>
                                 <TextInput secureTextEntry={true}  placeholder="Password" onChangeText={text=>this.setState({password:text})} placeholderTextColor={'#7966FF'} color='blue'style={{ textAlign:'center', color:'#7966FF',width:'90%',aspectRatio:5.71,borderColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}/>
-                                <TouchableOpacity onPress={()=>this.props.navigation.navigate('ConfirmPassword',{password:this.state.password})} style={{flexDirection:'column',justifyContent:'center',alignItems:'center',width:'90%',aspectRatio:5.71,backgroundColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}>
+                                <TouchableOpacity onPress={()=>this.props.navigation.navigate('ConfirmPassword',{password:this.state.password,username:this.props.route.params.username})} style={{flexDirection:'column',justifyContent:'center',alignItems:'center',width:'90%',aspectRatio:5.71,backgroundColor:'#7966FF',borderWidth:RFPercentage(0.1),borderRadius:RFPercentage(2)}}>
                                     <View style={{width:'11.11%',aspectRatio:1}}>
                                         <Image style={{width:'100%',height:'100%'}} source={require('../assets/arrowIcon.png')}/>
                                     </View>

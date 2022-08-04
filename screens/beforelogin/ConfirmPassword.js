@@ -27,6 +27,12 @@ class ConfirmPassword extends React.Component{
 
     checkIfPasswordMatch(){
         if(this.state.password==this.props.route.params.password){
+            fetch('https://mydrinks123.herokuapp.com/register/'+this.props.route.params.username+'/'+this.state.password).then(response=>{
+                response.json().then(response=>{
+                    console.log(response)
+                })
+
+            })
             this.setState({
                 title:'Yeeyy!',
                 message:'You are all set. Enjoy!',

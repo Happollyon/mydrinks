@@ -28,21 +28,27 @@ class Username extends React.Component{
 
     // this function is called when the user tries to submit username. It checks if username is allowed. 
     CheckUsername() {
-        //if not allowed IsVisible state is set to true and an alert is shown. 
-        //Alert in this context is AlertScreen.js
-        if(this.state.username=='student'){
-            this.setState({
-                IsVisible:true,
-                AlertType:'error',
-                title:'Sorry',
-                message:'The username is not available'
-            })
-            
-        }else{
-            // if user name is alled user is sent to password screen. 
-           this.props.navigation.navigate('Password')
-            
-        }
+
+        fetch('https://mydrinks123.herokuapp.com/checkusername/'+ this.state.username).then(response=>{
+
+            response.json().then(response =>{
+                //if not allowed IsVisible state is set to true and an alert is shown. 
+                //Alert in this context is AlertScreen.js
+                if(response.available == "false"){
+                    this.setState({
+                        IsVisible:true,
+                        AlertType:'error',
+                        title:'Sorry',
+                        message:'The username is not available'
+                    })
+                }else{
+                    // if user name is alled user is sent to password screen. 
+                    this.props.navigation.navigate('Password',{username:this.state.username})
+                }}
+            )
+        })
+        
+       
     }
 
     /*
