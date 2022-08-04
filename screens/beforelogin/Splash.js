@@ -17,8 +17,10 @@ class Splash extends React.Component{
     {   
        let logged
         // gets if user is already logged from local storage.
-        try { logged = await AsyncStorage.getItem('logged')
-            console.log(logged)
+        try { 
+            
+            logged = await AsyncStorage.getItem('logged')
+            
         }catch(e){
                 console.log(e)
         }
