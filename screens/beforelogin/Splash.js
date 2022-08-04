@@ -3,6 +3,7 @@ import {View,Text,StyleSheet,Image} from 'react-native'
 import {StatusBar} from 'expo-status-bar'
 import { DarkTheme } from '@react-navigation/native';
 import {LinearGradient } from 'expo-linear-gradient'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class Splash extends React.Component{
     constructor(props)  {
@@ -12,13 +13,29 @@ class Splash extends React.Component{
     }
 
     // this page makes sure that the Splash.js is visible for at least 5 secs. 
-    componentDidMount(){
-        // Start counting when the page is loaded
-        this.timeoutHandle = setTimeout(()=>{
+    async componentDidMount()
+    {   
+       let logged
+        // gets if user is already logged from local storage.
+        try { logged = await AsyncStorage.getItem('logged')
+            console.log(logged)
+        }catch(e){
+                console.log(e)
+        }
+        
+        if(logged=='true'){
+            // if logged the user is sent to main screen
+            this.props.navigation.navigate('SearchStack')
+        }else{
+
+            // if not user is sent to login screen. 
+            this.timeoutHandle = setTimeout(()=>{
             // Add your logic for the transition
             this.props.navigation.navigate('Welcome') // what to push here?
         }, 5000);
     }
+    
+}
     // Before the component closes the timer is cleared.
     componentWillUnmount(){
         clearTimeout(this.timeoutHandle); 

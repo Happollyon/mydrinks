@@ -1,4 +1,5 @@
 import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {View,Text,StyleSheet,TextInput,Image,TouchableOpacity, TouchableWithoutFeedback,KeyboardAvoidingView,Keyboard} from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
@@ -25,11 +26,21 @@ class ConfirmPassword extends React.Component{
     }
 
 
-    checkIfPasswordMatch(){
+     checkIfPasswordMatch(){
         if(this.state.password==this.props.route.params.password){
             fetch('https://mydrinks123.herokuapp.com/register/'+this.props.route.params.username+'/'+this.state.password).then(response=>{
-                response.json().then(response=>{
-                    console.log(response)
+                response.json().then(async (response)=>{
+                    // affter registered user is sent to main screen 
+                    // and local storage is updated for logged
+                    try {
+                        await AsyncStorage.setItem('logged','true')
+                        console.log('here')
+                    }
+                    catch(e){
+                        console.log("error in ConfirmPassword!")
+                    }
+
+                    this.props.navigation.navigate('SearchStack')
                 })
 
             })
