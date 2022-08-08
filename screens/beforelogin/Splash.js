@@ -14,7 +14,7 @@ class Splash extends React.Component{
 
     // this page makes sure that the Splash.js is visible for at least 5 secs. 
     async componentDidMount()
-    {   
+    {   console.log('here')
        let logged
         // gets if user is already logged from local storage.
         try { 

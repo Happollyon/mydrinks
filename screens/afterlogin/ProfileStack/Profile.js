@@ -21,7 +21,7 @@ class Profile extends React.Component{
         }catch(e){
             console.log('erro logout fucntion!')
         }
-        this.props.navigation.navigate('Splash')
+        this.props.navigation.navigate('Welcome')
     }
 
     render(){
