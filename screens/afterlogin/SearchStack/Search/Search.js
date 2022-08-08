@@ -42,7 +42,7 @@ class Search extends React.Component{
             
             <View style={{flex:1}}>
                 <LinearGradient style={{flex:1,alignItems:'center'}} locations={[0,0.2]} colors={['#B684F7','#5C61E7']} >
-                    <SearchHeader callApi={this.callApiAsync}/>
+                    <SearchHeader callApiAsync={this.callApiAsync}/>
                     <Body  navigation={this.props.navigation} results={this.state.results.drinks}/>
                 </LinearGradient>
             </View>
