@@ -29,9 +29,9 @@ class Favorite extends React.Component{
                         return fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='+item.drink_id).then(response=>{ 
                         
                             response.json().then(response =>{
-                                console.log('here')
+                                
                                 this.setState({ results: [...this.state.results, response.drinks[0]] })
-                                console.log(this.state.results)
+                                
                             })
                         })
                     })
@@ -50,7 +50,7 @@ class Favorite extends React.Component{
             <View style={{flex:1}}>
                 <LinearGradient style={{flex:1,alignItems:'center'}} locations={[0,0.2]} colors={['#B684F7','#5C61E7']} >
                  <FavoriteHeader/>   
-                <Body navigation={this.props.navigation} results={this.state.results}/>
+                <Body navigation={this.props.navigation} isFavorite ={true} results={this.state.results}/>
                 </LinearGradient>
             </View>
         )

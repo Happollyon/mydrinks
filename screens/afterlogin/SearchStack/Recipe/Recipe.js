@@ -26,7 +26,7 @@ class Recipe extends React.Component{
                         <Image style={{width:'100%',height:'100%'}} source={require('../../tabAssets/backArrow.png')}/>
                     </TouchableOpacity>
                     <TouchableOpacity  style={{width:'11.52%',aspectRatio:1.14}}>
-                        <Image style={{width:'100%',height:'100%'}} source={require('../../tabAssets/whiteHeart.png')}/>
+                        <Image style={{width:'100%',height:'100%'}} source={this.props.route.params.liked?require('../../tabAssets/redheart.png'):require('../../tabAssets/whiteHeart.png')}/>
                     </TouchableOpacity>
                 </View>
 

@@ -31,7 +31,7 @@ class Login extends React.Component{
                 if(response.logged == 'true')
                 {   // if credentials are validated, user sent to the search stack "inside the app"
                     try{
-                        console.log(response.userData[0].id)
+                        
                         let id = response.userData[0].id.toString()
                         await AsyncStorage.setItem('logged','true')
                         await AsyncStorage.setItem('user_id',id)
