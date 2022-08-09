@@ -33,8 +33,10 @@ class ConfirmPassword extends React.Component{
                     // affter registered user is sent to main screen 
                     // and local storage is updated for logged
                     try {
+                        let id = response.userData[0].id.toString()
                         await AsyncStorage.setItem('logged','true')
-                        console.log('here')
+                        await AsyncStorage.setItem('user_id',id)
+                        await AsyncStorage.setItem('username', response.userData[0].username)
                     }
                     catch(e){
                         console.log("error in ConfirmPassword!")

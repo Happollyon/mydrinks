@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import AlertScreen from "./AlertScreen";
 import {View,Image,Text,TextInput,Keyboard,KeyboardAvoidingView,TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 class Login extends React.Component{
     constructor(props){
         super(props);
@@ -17,24 +17,50 @@ class Login extends React.Component{
         this.CheckCredentials = this.CheckCredentials.bind(this)
     }
 
-    /*
+    /*  
+        called when user presses LOGIN button
         This function checks the credentials and if they dont match 
         the IsVisible is set to true and the appropriate message is 
         shown to the user. 
     */
     CheckCredentials() {
-        if(this.state.password == "123" && this.state.username =="Student")
-        {
-            this.setState({
-                IsVisible:true,
-                AlertType:'error',
-                title:'Sorry',
-                message:'The username and password dont match.'
+
+            // calls api and verifies users credentials
+          fetch('https://mydrinks123.herokuapp.com/loggin/'+this.state.username+'/'+this.state.password).then(response=>{
+            response.json().then(async (response)=>{
+                if(response.logged == 'true')
+                {   // if credentials are validated, user sent to the search stack "inside the app"
+                    try{
+                        console.log(response.userData[0].id)
+                        let id = response.userData[0].id.toString()
+                        await AsyncStorage.setItem('logged','true')
+                        await AsyncStorage.setItem('user_id',id)
+                        await AsyncStorage.setItem('username', response.userData[0].username)
+
+                      }catch(e){
+
+                        console.log('error loggin screen catch: '+ e)
+                      }
+                   
+                    this.props.navigation.navigate('SearchStack')
+                }else{
+
+                    // if credentials are not validated, user is shown an error message. 
+                    this.setState({
+                        IsVisible:true,
+                        AlertType:'error',
+                        title:'Sorry',
+                        message:'The username and password dont match.'
+                    })
+                }
+
             })
-        }else{
-            this.props.navigation.navigate('SearchStack')
+        })
+            
         }
-    }
+            
+        
+    
      /*
      this function should be added to all screens that use AlertScreen.js component.
      This function sets whether the alert shoud be visible or not. 
