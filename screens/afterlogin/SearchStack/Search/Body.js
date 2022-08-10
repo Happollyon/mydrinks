@@ -26,7 +26,7 @@ class Body extends React.Component{
             <FlatList style={{borderRadius:RFPercentage(4)}}
             contentContainerStyle={{alignItems:'center',paddingBottom:100}}
             data={this.props.results}
-            renderItem={({item})=>(<Item  navigation={this.props.navigation} data={item}/>)}
+            renderItem={({item})=>(<Item favoriteScreen={this.props.favoriteScreen} loadFavorites = {this.props.loadFavorites} navigation={this.props.navigation} data={item}/>)}
             keyExtractor={item => item.idDrink}
             />
             </View>

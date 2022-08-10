@@ -1,6 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {View,Text,Image,TouchableOpacity} from 'react-native';
+
+
 import { ScrollView } from "react-native-gesture-handler";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
@@ -9,12 +12,31 @@ class Recipe extends React.Component{
     constructor(props){
         super(props);
         this.state={
-                 
+                 likeCliked:false
         }
         this.likeButton = this.likeButton.bind(this)
     }
+
+    componentWillUnmount(){
+        /**
+         * this function is called when the user is about to return to the favorites scress
+         * this function will call the backend to reload the liked drinks.
+         * 
+         * likedCliked is set in this class in the likeButton function
+         * favoriteScreen is set in Favorite.js class. I makes sure the loadFavorite function wont be called 
+         * if user is return from recipe screen to searchScreen. 
+         * **/
+
+        if(this.state.likeCliked && this.props.route.params.favoriteScreen){
+        this.props.route.params.loadFavorites()
+        }
+    }
+
     componentDidMount(){
 
+        /**When the screen is loaded, this call is sent to database to make user user has liked this drink 
+         * and update the heart icon -> UI  
+         * **/
         this.props.navigation.setOptions({ tabBarStyle:{display:'none'}})
        
             fetch('http://mydrinks123.herokuapp.com/liked/44'+'/'+this.props.route.params.data.idDrink).then(response =>{
@@ -30,14 +52,23 @@ class Recipe extends React.Component{
         
     }
     likeButton(){
+
+        /**
+         * If the user cliks the button like (heart icon)
+         * this function calls the backend
+         * the called endpoint deppends on the liked state
+         * if liked iquals TRUE, dislike end point is called
+         * or like end point is called if like iquals true. 
+         * **/
         let url = this.state.liked?'http://mydrinks123.herokuapp.com/dislike/44':'http://mydrinks123.herokuapp.com/likedrink/44'
         fetch(url+'/'+this.props.route.params.data.idDrink).then(response=>{
             response.json().then(response=>{
-                console.log(response)
-                this.setState({'liked':!this.state.liked})
+                
+                this.setState({'liked':!this.state.liked, likeCliked:!this.state.likeCliked})
             })
         })
     }
+  
 
     render(){
         return(
@@ -46,7 +77,7 @@ class Recipe extends React.Component{
            
                     
                 <View style={{width:'91.36%',aspectRatio:9.76, flexDirection:'row',justifyContent:'space-between',marginTop:RFPercentage(8)}}>
-                    <TouchableOpacity onPress={()=>this.props.route.params.navigation.navigate.goBack()} style={{width:'10.22%',aspectRatio:1.06}}>
+                    <TouchableOpacity onPress={()=>this.props.route.params.navigation.goBack()} style={{width:'10.22%',aspectRatio:1.06}}>
                         <Image style={{width:'100%',height:'100%'}} source={require('../../tabAssets/backArrow.png')}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>this.likeButton()} style={{width:'11.52%',aspectRatio:1.14}}>
