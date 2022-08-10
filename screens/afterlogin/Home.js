@@ -32,7 +32,7 @@ class Home extends React.Component{
                 <Tab.Screen 
                 name="Search" 
                 component={Search}  
-                options={{ headerShown:false,
+                options={{ headerShown:false,gestureEnabled:false,
                 tabBarIcon:({focused})=>(
                     <View style={{alignItems:'center',justifyContent:'center'}}>
                         <Image resizeMode='contain'source={focused?require('./tabAssets/searchFocus.png'):require('./tabAssets/search.png')}

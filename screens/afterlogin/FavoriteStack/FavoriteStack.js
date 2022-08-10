@@ -13,8 +13,8 @@ export default class FavoriteStack extends React.Component{
 
     render(){
         return(
-        <Stack.Navigator initialRouteName="Favorite">
-            <Stack.Screen name="Favorite" component={Favorite} options={{headerShown:false}}/>
+        <Stack.Navigator initialRouteName="Favorite" screenOptions={{gestureEnabled:false}}>
+            <Stack.Screen name="Favorite" component={Favorite} options={{headerShown:false,gestureEnabled:false}}/>
         </Stack.Navigator>
         )
     }

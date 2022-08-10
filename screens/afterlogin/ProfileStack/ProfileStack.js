@@ -15,7 +15,7 @@ export default class ProfileStack extends React.Component{
     render(){
         return(
             <Stack.Navigator initialRouteName="Profile">
-                <Stack.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
+                <Stack.Screen name="Profile" component={Profile} options={{headerShown:false,gestureEnabled:false}}/>
             </Stack.Navigator>
         )
     }

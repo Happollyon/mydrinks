@@ -17,7 +17,7 @@ export default class SearchStack extends React.Component{
     render(){
         return(
             <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
+                <Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
                 <Stack.Screen name='Recipe' navigation={this.props.navigation} component={Recipe} options ={{tabBarVisable:false,headerShown:false}} />
             </Stack.Navigator>
         )

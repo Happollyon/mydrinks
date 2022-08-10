@@ -3,6 +3,7 @@ import {View,Text} from 'react-native';
 import Body from "../SearchStack/Search/Body";
 import {LinearGradient} from 'expo-linear-gradient';
 import FavoriteHeader from "./FavoriteHeader";
+import { StatusBar } from "expo-status-bar";
 
 class Favorite extends React.Component{
     constructor(props){
@@ -69,6 +70,7 @@ class Favorite extends React.Component{
     render(){
         return(
             <View style={{flex:1}}>
+                <StatusBar style={'light'}/>
                 <LinearGradient style={{flex:1,alignItems:'center'}} locations={[0,0.2]} colors={['#B684F7','#5C61E7']} >
                  <FavoriteHeader/>   
                 <Body favoriteScreen={true} loadFavorites={this.loadFavorites} navigation={this.props.navigation} results={this.state.results}/>
