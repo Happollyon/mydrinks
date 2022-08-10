@@ -9,12 +9,36 @@ class Recipe extends React.Component{
     constructor(props){
         super(props);
         this.state={
-
+                 
         }
+        this.likeButton = this.likeButton.bind(this)
     }
     componentDidMount(){
+
         this.props.navigation.setOptions({ tabBarStyle:{display:'none'}})
+       
+            fetch('http://mydrinks123.herokuapp.com/liked/44'+'/'+this.props.route.params.data.idDrink).then(response =>{
+                response.json().then(response=>{
+                    if(response.alreadyLiked=="true"){
+                        this.setState({liked:true})
+                    }else{
+                        this.setState({liked:false})
+                    }
+                    
+                })
+            })
+        
     }
+    likeButton(){
+        let url = this.state.liked?'http://mydrinks123.herokuapp.com/dislike/44':'http://mydrinks123.herokuapp.com/likedrink/44'
+        fetch(url+'/'+this.props.route.params.data.idDrink).then(response=>{
+            response.json().then(response=>{
+                console.log(response)
+                this.setState({'liked':!this.state.liked})
+            })
+        })
+    }
+
     render(){
         return(
         <LinearGradient style={{width:'100%',height:'100%'}} locations={[0,0.3]} colors={['rgba(182,132,247,0.51)','#5960E6']}>
@@ -25,8 +49,8 @@ class Recipe extends React.Component{
                     <TouchableOpacity onPress={()=>this.props.route.params.navigation.navigate.goBack()} style={{width:'10.22%',aspectRatio:1.06}}>
                         <Image style={{width:'100%',height:'100%'}} source={require('../../tabAssets/backArrow.png')}/>
                     </TouchableOpacity>
-                    <TouchableOpacity  style={{width:'11.52%',aspectRatio:1.14}}>
-                        <Image style={{width:'100%',height:'100%'}} source={this.props.route.params.liked?require('../../tabAssets/redheart.png'):require('../../tabAssets/whiteHeart.png')}/>
+                    <TouchableOpacity onPress={()=>this.likeButton()} style={{width:'11.52%',aspectRatio:1.14}}>
+                        <Image style={{width:'100%',height:'100%'}} source={this.state.liked?require('../../tabAssets/redheart.png'):require('../../tabAssets/whiteHeart.png')}/>
                     </TouchableOpacity>
                 </View>
 

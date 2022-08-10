@@ -50,7 +50,7 @@ class Favorite extends React.Component{
             <View style={{flex:1}}>
                 <LinearGradient style={{flex:1,alignItems:'center'}} locations={[0,0.2]} colors={['#B684F7','#5C61E7']} >
                  <FavoriteHeader/>   
-                <Body navigation={this.props.navigation} isFavorite ={true} results={this.state.results}/>
+                <Body navigation={this.props.navigation} results={this.state.results}/>
                 </LinearGradient>
             </View>
         )

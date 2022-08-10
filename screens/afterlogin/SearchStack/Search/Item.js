@@ -56,7 +56,7 @@ class Item extends React.Component{
     render(){
         return(
               <TouchableOpacity onPress={()=>this.props.navigation.navigate('Recipe',{data:this.props.data,ingredientCount:this.state.ingredientCount,
-                ingredients:this.state.ingredients,measures:this.state.measures,navigation:this.props.navigation, liked:this.props.liked})} 
+                ingredients:this.state.ingredients,measures:this.state.measures,navigation:this.props.navigation})} 
               style={{width:'89%',borderRadius:RFPercentage(3),marginVertical:RFPercentage(1.5),
               aspectRatio:2.23,backgroundColor:'#FFF',flexDirection:'row'}}>
                 
