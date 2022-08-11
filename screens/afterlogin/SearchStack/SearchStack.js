@@ -13,11 +13,13 @@ export default class SearchStack extends React.Component{
         super(props);
         this.state = {}
     }
-    
+    componentDidMount(){
+      console.log(this.props.navigation + ' searchStack')
+    }
     render(){
         return(
             <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
+                <Stack.Screen name="Home" children={()=><Home results = {this.props.results} navigation={this.props.navigation} loadFavorites={this.props.loadFavorites}/>}   options={{headerShown:false}} />
                 <Stack.Screen name='Recipe' navigation={this.props.navigation} component={Recipe} options ={{tabBarVisable:false,headerShown:false}} />
             </Stack.Navigator>
         )

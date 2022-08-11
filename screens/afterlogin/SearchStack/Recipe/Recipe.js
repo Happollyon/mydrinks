@@ -26,8 +26,9 @@ class Recipe extends React.Component{
          * favoriteScreen is set in Favorite.js class. I makes sure the loadFavorite function wont be called 
          * if user is return from recipe screen to searchScreen. 
          * **/
-
-        if(this.state.likeCliked && this.props.route.params.favoriteScreen){
+        
+        if(this.state.likeCliked){
+         
         this.props.route.params.loadFavorites()
         }
     }
@@ -77,7 +78,7 @@ class Recipe extends React.Component{
            
                     
                 <View style={{width:'91.36%',aspectRatio:9.76, flexDirection:'row',justifyContent:'space-between',marginTop:RFPercentage(8)}}>
-                    <TouchableOpacity onPress={()=>this.props.route.params.navigation.goBack()} style={{width:'10.22%',aspectRatio:1.06}}>
+                    <TouchableOpacity onPress={()=>this.props.route.params.navigation.pop()} style={{width:'10.22%',aspectRatio:1.06}}>
                         <Image style={{width:'100%',height:'100%'}} source={require('../../tabAssets/backArrow.png')}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>this.likeButton()} style={{width:'11.52%',aspectRatio:1.14}}>
