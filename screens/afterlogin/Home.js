@@ -20,9 +20,7 @@ class Home extends React.Component{
         }
        
     }
-    componentDidMount(){
-        console.log(this.props.results.length + 'Home')
-      }
+    
     render(){
         return(
             <Tab.Navigator initialRouteName="Search"   screenOptions={{tabBarShowLabel:false,
@@ -33,7 +31,8 @@ class Home extends React.Component{
             }}}>
                 <Tab.Screen 
                 name="Search" 
-                component={Search}  initialParams={{results:this.props.results,loadFavorites:this.props.loadFavorites}}
+                component={Search}  
+                initialParams={{results:this.props.results,loadFavorites:this.props.loadFavorites}}
                 options={{ headerShown:false,gestureEnabled:false,
                 tabBarIcon:({focused})=>(
                     <View style={{alignItems:'center',justifyContent:'center'}}>
@@ -43,6 +42,7 @@ class Home extends React.Component{
                     </View>
                 )
                 }}/>
+                
                 <Tab.Screen 
                 name="FavoriteStack" 
                 

@@ -13,9 +13,7 @@ export default class SearchStack extends React.Component{
         super(props);
         this.state = {}
     }
-    componentDidMount(){
-      console.log(this.props.navigation + ' searchStack')
-    }
+   
     render(){
         return(
             <Stack.Navigator initialRouteName="Home">

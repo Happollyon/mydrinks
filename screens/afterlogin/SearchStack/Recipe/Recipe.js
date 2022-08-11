@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {View,Text,Image,TouchableOpacity} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import { ScrollView } from "react-native-gesture-handler";
@@ -17,7 +18,7 @@ class Recipe extends React.Component{
         this.likeButton = this.likeButton.bind(this)
     }
 
-    componentWillUnmount(){
+  componentWillUnmount(){
         /**
          * this function is called when the user is about to return to the favorites scress
          * this function will call the backend to reload the liked drinks.
@@ -27,20 +28,29 @@ class Recipe extends React.Component{
          * if user is return from recipe screen to searchScreen. 
          * **/
         
+         
         if(this.state.likeCliked){
          
         this.props.route.params.loadFavorites()
         }
     }
 
-    componentDidMount(){
+     async componentDidMount(){
 
         /**When the screen is loaded, this call is sent to database to make user user has liked this drink 
          * and update the heart icon -> UI  
          * **/
-        this.props.navigation.setOptions({ tabBarStyle:{display:'none'}})
+         let user_id
+         // gets if user is already logged from local storage.
+          try { 
+             
+           user_id = await AsyncStorage.getItem('user_id')
+             
+           }catch(e){
+                 console.log(e)
+           }
        
-            fetch('http://mydrinks123.herokuapp.com/liked/44'+'/'+this.props.route.params.data.idDrink).then(response =>{
+            fetch('http://mydrinks123.herokuapp.com/liked/'+user_id+'/'+this.props.route.params.data.idDrink).then(response =>{
                 response.json().then(response=>{
                     if(response.alreadyLiked=="true"){
                         this.setState({liked:true})
@@ -61,7 +71,17 @@ class Recipe extends React.Component{
          * if liked iquals TRUE, dislike end point is called
          * or like end point is called if like iquals true. 
          * **/
-        let url = this.state.liked?'http://mydrinks123.herokuapp.com/dislike/44':'http://mydrinks123.herokuapp.com/likedrink/44'
+
+    let user_id
+    // gets if user is already logged from local storage.
+     try { 
+        
+      user_id =  AsyncStorage.getItem('user_id')
+        
+      }catch(e){
+            console.log(e)
+      }
+        let url = this.state.liked?'http://mydrinks123.herokuapp.com/dislike/'+user_id:'http://mydrinks123.herokuapp.com/likedrink/'+user_id
         fetch(url+'/'+this.props.route.params.data.idDrink).then(response=>{
             response.json().then(response=>{
                 
