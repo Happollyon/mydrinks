@@ -62,7 +62,7 @@ class Recipe extends React.Component{
             })
         
     }
-    likeButton(){
+   async likeButton(){
 
         /**
          * If the user cliks the button like (heart icon)
@@ -76,7 +76,7 @@ class Recipe extends React.Component{
     // gets if user is already logged from local storage.
      try { 
         
-      user_id =  AsyncStorage.getItem('user_id')
+      user_id = await AsyncStorage.getItem('user_id')
         
       }catch(e){
             console.log(e)
